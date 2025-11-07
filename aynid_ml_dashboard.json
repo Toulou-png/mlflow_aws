@@ -1,0 +1,104 @@
+{
+  "id": null,
+  "uid": "aynid-ml-monitoring",
+  "title": "🧠 Aynid ML Monitoring Dashboard",
+  "tags": ["mlflow", "prometheus", "aws", "aynid"],
+  "timezone": "browser",
+  "schemaVersion": 38,
+  "version": 1,
+  "refresh": "10s",
+  "panels": [
+    {
+      "type": "stat",
+      "title": "Model Accuracy",
+      "id": 1,
+      "datasource": "Prometheus",
+      "targets": [
+        { "expr": "model_accuracy", "legendFormat": "Accuracy", "refId": "A" }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit",
+          "color": {
+            "mode": "thresholds",
+            "thresholds": [
+              { "value": 0, "color": "red" },
+              { "value": 0.7, "color": "orange" },
+              { "value": 0.85, "color": "green" }
+            ]
+          }
+        }
+      },
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "orientation": "horizontal" },
+      "gridPos": { "x": 0, "y": 0, "w": 6, "h": 4 }
+    },
+    {
+      "type": "stat",
+      "title": "Model F1 Score",
+      "id": 2,
+      "datasource": "Prometheus",
+      "targets": [
+        { "expr": "model_f1_score", "legendFormat": "F1 Score", "refId": "A" }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "color": {
+            "mode": "thresholds",
+            "thresholds": [
+              { "value": 0, "color": "red" },
+              { "value": 0.6, "color": "orange" },
+              { "value": 0.8, "color": "green" }
+            ]
+          }
+        }
+      },
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] } },
+      "gridPos": { "x": 6, "y": 0, "w": 6, "h": 4 }
+    },
+    {
+      "type": "graph",
+      "title": "Evolution de la Précision & Rappel",
+      "id": 3,
+      "datasource": "Prometheus",
+      "targets": [
+        { "expr": "model_precision", "legendFormat": "Precision", "refId": "A" },
+        { "expr": "model_recall", "legendFormat": "Recall", "refId": "B" }
+      ],
+      "gridPos": { "x": 0, "y": 4, "w": 12, "h": 8 },
+      "lines": true,
+      "fill": 1,
+      "linewidth": 2,
+      "legend": { "show": true }
+    },
+    {
+      "type": "graph",
+      "title": "AUC Score (Historique)",
+      "id": 4,
+      "datasource": "Prometheus",
+      "targets": [
+        { "expr": "model_auc_score", "legendFormat": "AUC", "refId": "A" }
+      ],
+      "gridPos": { "x": 0, "y": 12, "w": 12, "h": 8 },
+      "lines": true,
+      "fill": 1,
+      "linewidth": 2,
+      "legend": { "show": true }
+    }
+  ],
+  "templating": {
+    "list": [
+      {
+        "type": "datasource",
+        "name": "Prometheus",
+        "label": "Prometheus Data Source",
+        "query": "prometheus",
+        "refresh": 1
+      }
+    ]
+  },
+  "time": { "from": "now-15m", "to": "now" },
+  "timepicker": { "refresh_intervals": ["5s", "10s", "30s", "1m", "5m"] },
+  "annotations": { "list": [] },
+  "editable": true
+}

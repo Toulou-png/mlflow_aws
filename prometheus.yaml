@@ -1,0 +1,4 @@
+scrape_configs:
+  - job_name: 'ml_pipeline'
+    static_configs:
+      - targets: ['52.91.219.35:8000']

@@ -1,0 +1,44 @@
+# === Core Python / Utils ===
+numpy==1.26.4
+pandas==2.2.3
+matplotlib==3.9.2
+seaborn==0.13.2
+joblib==1.4.2
+boto3==1.35.20
+psycopg2-binary==2.9.9
+python-dotenv==1.0.1
+
+# === Machine Learning ===
+scikit-learn==1.5.2
+
+# === MLflow & Tracking ===
+mlflow==2.16.0
+
+# === Prometheus / Observabilité ===
+prometheus-client==0.21.0
+opentelemetry-api==1.28.2
+opentelemetry-sdk==1.28.2
+opentelemetry-exporter-prometheus==0.48b0
+opentelemetry-semantic-conventions==0.48b0
+
+# === Web API (FastAPI + Uvicorn) ===
+fastapi==0.115.5
+uvicorn[standard]==0.32.0
+
+# === Web App (Streamlit) ===
+streamlit==1.39.0
+
+# === AWS ===
+botocore==1.35.20
+s3transfer==0.10.2
+
+# === Visualisation & Dashboards ===
+plotly==5.24.1
+altair==5.4.1
+
+# === Security / Certificates ===
+cryptography==43.0.1
+
+# === Dev / Debug ===
+ipykernel==6.29.5
+notebook==7.2.2
