@@ -20,6 +20,7 @@ from botocore.exceptions import ClientError
 import psycopg2
 
 
+IP_ADDRESS = "3.85.105.94"  # Adresse IP publique de votre instance EC2
 # ===========================================================
 # 🌩️ CONFIGURATION AWS + MLFLOW + POSTGRES
 # ===========================================================
@@ -27,7 +28,7 @@ import psycopg2
 def setup_aws_mlflow_postgres(
     region="us-east-1",
     bucket_name="mlflow-artefacts-aynid",
-    mlflow_server_uri="http://52.91.219.35:5000",
+    mlflow_server_uri=f"http://{IP_ADDRESS}:5000",
     postgres_config=None
 ):
     """
