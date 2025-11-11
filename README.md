@@ -1,5 +1,3 @@
-En tant qu'assistant IA, je peux générer un fichier **README.md** complet pour votre projet **`mlflow_aws`** basé sur les fichiers Python, JSON et Bash que vous avez fournis.
-
 ## 🧠 Projet : Pipeline ML Aynid sur AWS avec MLflow et Observabilité
 
 Ce projet implémente un pipeline d'apprentissage automatique (Machine Learning - ML) pour la **prédiction d'abandon de panier** pour la société fictive Aynid. L'infrastructure est déployée sur **AWS** et utilise **MLflow** pour le suivi des expériences et **Prometheus/Grafana** pour l'observabilité. Une API **FastAPI** permet l'entraînement et la prédiction, et une interface **Streamlit** offre un tableau de bord convivial.
