@@ -28,7 +28,9 @@ from opentelemetry.exporter.prometheus import PrometheusMetricReader
 from opentelemetry.sdk.resources import Resource
 
 
-IP_ADDRESS = "3.85.105.94"  # Adresse IP publique de votre instance EC2
+IP_ADDRESS = "3.90.169.161"  # Adresse IP publique de votre instance EC2
+PORT_MLFLOW = 5000  # Port du serveur MLflow
+
 
 # ===========================================================
 # 🌩️ CONFIGURATION AWS + MLFLOW + POSTGRES
@@ -36,7 +38,7 @@ IP_ADDRESS = "3.85.105.94"  # Adresse IP publique de votre instance EC2
 def setup_aws_mlflow_postgres(
     region="us-east-1",
     bucket_name="mlflow-artefacts-aynid",
-    mlflow_server_uri=f"http://{IP_ADDRESS}:5000",
+    mlflow_server_uri=f"http://{IP_ADDRESS}:{PORT_MLFLOW}",
     postgres_config=None
 ):
     try:
@@ -193,7 +195,7 @@ class AynidCartAbandonmentAWS:
         params = {"n_estimators": 300, "max_depth": 12, "random_state": 42}
         model = RandomForestClassifier(**params)
 
-        Mlflow_tracking_URI = f"http://{IP_ADDRESS}:5000"
+        Mlflow_tracking_URI = f"http://{IP_ADDRESS}:{PORT_MLFLOW}"
         mlflow.set_tracking_uri(Mlflow_tracking_URI)
 
         with mlflow.start_run(run_name=f"RF_{self.timestamp}") as run:
